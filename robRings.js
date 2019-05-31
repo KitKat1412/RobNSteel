@@ -7,18 +7,19 @@ function addInfo() {
 
   // closes modal when submit button is clicked
 //  document.querySelector('.bg-modal').style.display = 'none';
-  $(".bg-modal").toggle(fasle);
+  $(".bg-modal").toggle(false);
 
  // validation
- if (document.getElementById("new_sku").value <= 0) {
-   alert('Please enter a value in all fields.');
- } else if (document.getElementById("new_descrip").value <= 0 ) {
-    alert('Please enter a value in all fields.');
-} else if (document.getElementById("new_qty").value <= 0) {
-   alert('Please enter a value in all fields.'); 
-} else if (document.getElementById("new_cost").value <= 0) {
+//  if (document.getElementById("new_sku").value <= 0) {
+if($("#new_sku").val() <= 0){
   alert('Please enter a value in all fields.');
-} else if (document.getElementById("new_price").value <= 0) {
+} else if ($("#new_descrip").val() <= 0 ) {
+    alert('Please enter a value in all fields.');
+} else if ($("#new_qty").val() <= 0) {
+   alert('Please enter a value in all fields.'); 
+} else if ($("new_cost").val() <= 0) {
+  alert('Please enter a value in all fields.');
+} else if ($("new_price").val() <= 0) {
   alert('Please enter a value in all fields.')
 } else {
 
