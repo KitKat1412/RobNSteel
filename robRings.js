@@ -6,7 +6,8 @@ function addInfo() {
   let cellSku, cellDescription, cellQty, cellCost, cellPrice, cellImage;
 
   // closes modal when submit button is clicked
- document.querySelector('.bg-modal').style.display = 'none';
+//  document.querySelector('.bg-modal').style.display = 'none';
+  $(".bg-modal").toggle(fasle);
 
  // validation
  if (document.getElementById("new_sku").value <= 0) {
