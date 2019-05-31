@@ -1,5 +1,7 @@
+
 function addNewItem() {
   document.querySelector('.bg-modal').style.display = 'flex';
+  // $(".bg-modal").toggle();
 }
 
 function addInfo() {
@@ -17,14 +19,16 @@ if($("#new_sku").val() <= 0){
     alert('Please enter a value in all fields.');
 } else if ($("#new_qty").val() <= 0) {
    alert('Please enter a value in all fields.'); 
-} else if ($("new_cost").val() <= 0) {
+} else if ($("#new_cost").val() <= 0) {
   alert('Please enter a value in all fields.');
-} else if ($("new_price").val() <= 0) {
+} else if ($("#new_price").val() <= 0) {
   alert('Please enter a value in all fields.')
+} else if($("#file").val() <= 0) {
+  alert('Please upload a file.');
 } else {
 
     // selects table
-    let table = document.getElementById("main_table");
+    let table = $("#main_table").val(); //document.getElementById("main_table");
     
       // creates new row
       let row = table.insertRow(1);
@@ -38,11 +42,11 @@ if($("#new_sku").val() <= 0){
       cellImage = row.insertCell(5);
 
       // updates user interface
-      cellSku.innerHTML = document.getElementById("new_sku").value;
-      cellDescription.innerHTML = document.getElementById("new_descrip").value;
-      cellQty.innerHTML = parseInt(document.getElementById("new_qty").value); 
-      cellCost.innerHTML = "$" + document.getElementById("new_cost").value;
-      cellPrice.innerHTML = "$" + document.getElementById("new_price").value;
+      cellSku.innerHTML = $("#new_sku").val(); //document.getElementById("new_sku").value;
+      cellDescription.innerHTML = $("#new_descrip").val();
+      cellQty.innerHTML = parseInt($("#new_qty").val()); 
+      cellCost.innerHTML = "$" + parseFloat($("#new_cost").val()).toFixed(2);
+      cellPrice.innerHTML = "$" + parseFloat($("#new_price").val()).toFixed(2);
     
       // upload img
       let picture = document.getElementById("file").files[0].name;
@@ -51,22 +55,18 @@ if($("#new_sku").val() <= 0){
    
 
   // clear fields once you hit submit
-  document.getElementById('new_sku').value = '';
-  document.getElementById('new_descrip').value = '';
-  document.getElementById('new_qty').value = '';
-  document.getElementById('new_cost').value = '';
-  document.getElementById('new_price').value = '';
-  document.getElementById('file').value = '';
-
+  $("#new_sku, #new_descrip, #new_qty, #new_cost, #new_price, #file").val("");
 }
 
-document.getElementById('btn-add-new').addEventListener('click', addInfo);
+// document.getElementById('btn-add-new').addEventListener('click', addInfo);
+$("#btn-add-new").click(addInfo);
 
 // close modal
-document.querySelector('.close').addEventListener('click', function() {
-  document.querySelector('.bg-modal').style.display = 'none';
+// document.querySelector('.close').addEventListener('click', function() {
+$(".close").click(function() {
+  $(".bg-modal").toggle(false);
 });
 
 //TODO: add edit button to each row, modal, edit UI
-
-document.querySelector('.edit_btn').addEventListener('click', addNewItem);
+// document.querySelector('.edit_btn').addEventListener('click', addNewItem);
+$(".edit_btn").click(addNewItem);
